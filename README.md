@@ -1,3 +1,22 @@
+# coverage-tree-next
+
+## TODO
+
+- [x] show tree graph based on coverage report
+- [x] expandable node
+- [x] custom node renderer
+- [x] collor of node based on file coverage
+- [ ] select between lines/functions/statements/branches
+- [ ] node with progress bar
+- [x] calculate total coverage of node
+- [ ] calculate total coverage of node and ignore duplicated nodes
+- [ ] link to file with coverage
+- [ ] copy node file path
+- [ ] search node
+- [ ] render graph on center initially
+
+## Next doc
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
