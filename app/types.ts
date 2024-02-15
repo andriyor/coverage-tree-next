@@ -18,6 +18,7 @@ export type FileTree = {
   path: string;
   name: string;
   meta: Coverage;
+  usedExports: string[];
   children: FileTree[];
 };
 

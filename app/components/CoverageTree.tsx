@@ -23,6 +23,10 @@ const getColorByCoverage = (percentage: number) => {
   }
 };
 
+const truncate = (str: string, length: number) => {
+  return str.length > length ? str.slice(0, length - 1) + '...' : str;
+};
+
 const buildNodeText = (cfg: FileTreeNew) => {
   return (
     `${cfg.name}\n` +
@@ -31,7 +35,8 @@ const buildNodeText = (cfg: FileTreeNew) => {
     ` ${cfg.meta.lines.covered}/${cfg.meta.lines.total}\n` +
     'Lines in tree: ' +
     cfg.totalMeta.lines.pct +
-    ` ${cfg.totalMeta.lines.covered}/${cfg.totalMeta.lines.total}`
+    ` ${cfg.totalMeta.lines.covered}/${cfg.totalMeta.lines.total}\n` +
+    `Used exports:\n${truncate(cfg.usedExports.join(', '), 30)}`
   );
 };
 
@@ -53,7 +58,7 @@ Graphin.registerNode(
           x: 0,
           y: 0,
           width: 200,
-          height: 45,
+          height: 75,
           fill: getColorByCoverage(cfg.meta.lines.pct),
         },
         draggable: true,
@@ -63,7 +68,7 @@ Graphin.registerNode(
         attrs: {
           fontSize: 12,
           x: 0,
-          y: 40,
+          y: 70,
           text: buildNodeText(cfg),
           fill: '#ddd',
         },

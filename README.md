@@ -24,7 +24,7 @@ serve coverage
 
 ## TODO
 
-- [x] show tree graph based on coverage report
+- [x] show tree tree based on coverage report
 - [x] expandable node
 - [x] custom node renderer
 - [x] collor of node based on file coverage
@@ -35,7 +35,11 @@ serve coverage
 - [x] open html report by node
 - [x] copy node file path
 - [ ] search node
-- [ ] render graph on center initially
+- [ ] render tree on center initially
+- [x] used exports by parent node
+- [ ] show used exort as arrow label?
+- [ ] coverage based on used import
+- [ ] file graph
 
 ## Next doc
 
