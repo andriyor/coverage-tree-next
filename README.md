@@ -1,5 +1,27 @@
 # coverage-tree-next
 
+## Usage
+
+1. Enable `json-summary` and `html`(optional) reports [reporter](https://jestjs.io/docs/configuration#coveragereporters-arraystring--string-options)
+
+2. Run [ts-tree](https://github.com/andriyor/ts-tree) generation with coverage report info
+
+```shell
+tsx ../../../personal/ts-tree/src/fileTree.ts -r='src/containers/settings/bank-account/bank-account.container.tsx' -o='../../../personal/coverage-graph-next/app/tree-data/my-tree.json' -m='coverage/coverage-summary.json'
+```
+
+3. Run total coverage calculation based on generated tree
+
+```shell
+tsx app/index.ts
+```
+
+4. [Serve](https://github.com/vercel/serve) coverage to open `html` report by node
+
+```
+serve coverage
+```
+
 ## TODO
 
 - [x] show tree graph based on coverage report
@@ -10,8 +32,8 @@
 - [ ] node with progress bar
 - [x] calculate total coverage of node
 - [ ] calculate total coverage of node and ignore duplicated nodes
-- [ ] link to file with coverage
-- [ ] copy node file path
+- [x] open html report by node
+- [x] copy node file path
 - [ ] search node
 - [ ] render graph on center initially
 

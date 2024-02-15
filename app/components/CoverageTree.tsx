@@ -1,41 +1,42 @@
 "use client";
-import Graphin, { Behaviors, Utils } from "@antv/graphin";
+import Graphin, { Behaviors, Utils, Components } from '@antv/graphin';
 
 // import tree from "./tree.json";
 // import myTree from "./my-tree.json";
-import myTreeSum from "../tree-data/my-tree-sum.json";
-import { FileTreeNew } from "../types";
-import { useEffect } from "react";
+import myTreeSum from '../tree-data/my-tree-sum.json';
+import { FileTreeNew } from '../types';
+import { NodeMenu } from './NodeMenu';
 
 const { DragCanvas, ZoomCanvas, DragNode, TreeCollapse } = Behaviors;
+const { ContextMenu } = Components;
 
 // const dataTree = Utils.mock(20).tree().graphinTree();
 // console.log(dataTree);
 
 const getColorByCoverage = (percentage: number) => {
   if (percentage >= 70 && percentage <= 100) {
-    return "green";
+    return 'green';
   } else if (percentage >= 50 && percentage <= 70) {
-    return "yellow";
+    return 'yellow';
   } else {
-    return "red";
+    return 'red';
   }
 };
 
 const buildNodeText = (cfg: FileTreeNew) => {
   return (
     `${cfg.name}\n` +
-    "Lines in file: " +
+    'Lines in file: ' +
     cfg.meta.lines.pct +
     ` ${cfg.meta.lines.covered}/${cfg.meta.lines.total}\n` +
-    "Lines in tree: " +
+    'Lines in tree: ' +
     cfg.totalMeta.lines.pct +
     ` ${cfg.totalMeta.lines.covered}/${cfg.totalMeta.lines.total}`
   );
 };
 
 Graphin.registerNode(
-  "custom-node",
+  'custom-node',
   {
     options: {
       style: {},
@@ -46,9 +47,9 @@ Graphin.registerNode(
     },
     // @ts-expect-error
     draw(cfg: FileTreeNew, group) {
-      const keyshape = group.addShape("rect", {
+      const keyshape = group.addShape('rect', {
         attrs: {
-          id: "circle-floor",
+          id: 'circle-floor',
           x: 0,
           y: 0,
           width: 200,
@@ -56,34 +57,33 @@ Graphin.registerNode(
           fill: getColorByCoverage(cfg.meta.lines.pct),
         },
         draggable: true,
-        name: "circle-floor",
+        name: 'circle-floor',
       });
-      group.addShape("text", {
+      group.addShape('text', {
         attrs: {
           fontSize: 12,
           x: 0,
           y: 40,
           text: buildNodeText(cfg),
-          fill: "#ddd",
+          fill: '#ddd',
         },
         draggable: true,
-        name: "text",
+        name: 'text',
       });
       return keyshape;
     },
   },
-  "single-node"
+  'single-node',
 );
 
 export const CoverageTree = () => {
-  useEffect(() => {}, []);
   return (
     <Graphin
       data={myTreeSum}
-      defaultNode={{ type: "custom-node" }}
+      defaultNode={{ type: 'custom-node' }}
       layout={{
-        type: "compactBox",
-        direction: "LR",
+        type: 'compactBox',
+        direction: 'LR',
         getId: function getId(d: FileTreeNew) {
           return d.id;
         },
@@ -105,6 +105,9 @@ export const CoverageTree = () => {
       <ZoomCanvas enableOptimize />
       <DragNode />
       <DragCanvas />
+      <ContextMenu style={{ background: '#fff' }} bindType="node">
+        {(value) => <NodeMenu {...value} />}
+      </ContextMenu>
     </Graphin>
   );
 };
