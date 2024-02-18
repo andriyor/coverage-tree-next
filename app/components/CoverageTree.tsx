@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import Graphin, { Behaviors, Utils, Components } from '@antv/graphin';
 
 // import tree from "./tree.json";

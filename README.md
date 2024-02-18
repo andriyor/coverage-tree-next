@@ -2,7 +2,7 @@
 
 ## Usage
 
-1. Enable `json-summary` and `html`(optional) reports [reporter](https://jestjs.io/docs/configuration#coveragereporters-arraystring--string-options)
+1. Enable `json-summary` and `html`(optional) reports for [jest](https://jestjs.io/docs/configuration#coveragereporters-arraystring--string-options) or [karma](https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md#type)
 
 2. Run [ts-tree](https://github.com/andriyor/ts-tree) generation with coverage report info
 
