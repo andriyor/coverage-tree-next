@@ -40,6 +40,9 @@ serve coverage
 - [ ] show used exort as arrow label?
 - [ ] coverage based on used import
 - [ ] file graph
+- [ ] use as CLI with ts-tree inside
+- [ ] deploy
+- [x] pass tree as search param
 
 ## Next doc
 

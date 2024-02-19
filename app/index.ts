@@ -16,15 +16,14 @@ const traverseAndBundleTree = (node: FileTreeNew) => {
       traverseAndBundleTree(child);
       for (const type of ['lines', 'functions', 'statements', 'branches']) {
         for (const prop of ['total', 'covered', 'skipped']) {
-          node['totalMeta'][type][prop] =
-            node['totalMeta'][type][prop] + child['totalMeta'][type][prop];
+          // @ts-expect-error
+          node['totalMeta'][type][prop] = node['totalMeta'][type][prop] + child['totalMeta'][type][prop];
         }
       }
 
       for (const type of ['lines', 'functions', 'statements', 'branches']) {
-        node['totalMeta'][type].pct = Number(
-          ((node['totalMeta'][type].covered * 100) / node['totalMeta'][type].total).toFixed(2),
-        );
+        // @ts-expect-error
+        node['totalMeta'][type].pct = Number(((node['totalMeta'][type].covered * 100) / node['totalMeta'][type].total).toFixed(2));
       }
     }
   }
