@@ -26,3 +26,5 @@ export type FileTreeNew = FileTree & {
   totalMeta: Coverage;
   children: FileTreeNew[];
 };
+
+export type Mode = 'tree' | 'coverageTree';

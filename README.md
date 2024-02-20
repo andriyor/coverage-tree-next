@@ -29,7 +29,7 @@ serve coverage
 - [x] custom node renderer
 - [x] collor of node based on file coverage
 - [ ] select between lines/functions/statements/branches
-- [ ] node with progress bar
+- [ ] node with coverage progress bar
 - [x] calculate total coverage of node
 - [ ] calculate total coverage of node and ignore duplicated nodes
 - [x] open html report by node
@@ -41,8 +41,9 @@ serve coverage
 - [ ] coverage based on used import
 - [ ] file graph
 - [ ] use as CLI with ts-tree inside
-- [ ] deploy
+- [x] deploy
 - [x] pass tree as search param
+- [x] view mode tree/coverageTree 
 
 ## Next doc
 

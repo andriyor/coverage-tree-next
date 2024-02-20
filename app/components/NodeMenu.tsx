@@ -1,3 +1,4 @@
+'use client';
 import { Menu } from 'antd';
 import type { ContextMenuValue } from '@antv/graphin';
 import type { MenuProps } from 'antd';

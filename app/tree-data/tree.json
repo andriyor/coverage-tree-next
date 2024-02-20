@@ -2,9 +2,30 @@
   "id": "root",
   "path": "Root",
   "name": "Roor",
-  "style": {
-    "label": {
-      "value": "kek"
+  "meta": {
+    "lines": {
+      "total": 394,
+      "covered": 315,
+      "skipped": 0,
+      "pct": 79.94
+    },
+    "functions": {
+      "total": 16,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 37.5
+    },
+    "statements": {
+      "total": 394,
+      "covered": 315,
+      "skipped": 0,
+      "pct": 79.94
+    },
+    "branches": {
+      "total": 44,
+      "covered": 34,
+      "skipped": 0,
+      "pct": 77.27
     }
   },
   "children": [
@@ -12,9 +33,30 @@
       "id": "/Users/aoriekhov/git/personal/ts-tree/test/test-project/index.ts",
       "path": "/Users/aoriekhov/git/personal/ts-tree/test/test-project/index.ts",
       "name": "index.ts",
-      "style": {
-        "label": {
-          "value": "kek"
+      "meta": {
+        "lines": {
+          "total": 394,
+          "covered": 315,
+          "skipped": 0,
+          "pct": 79.94
+        },
+        "functions": {
+          "total": 16,
+          "covered": 6,
+          "skipped": 0,
+          "pct": 37.5
+        },
+        "statements": {
+          "total": 394,
+          "covered": 315,
+          "skipped": 0,
+          "pct": 79.94
+        },
+        "branches": {
+          "total": 44,
+          "covered": 34,
+          "skipped": 0,
+          "pct": 77.27
         }
       },
       "children": [
@@ -22,9 +64,30 @@
           "id": "/Users/aoriekhov/git/personal/ts-tree/test/test-project/dedp.ts",
           "path": "/Users/aoriekhov/git/personal/ts-tree/test/test-project/dedp.ts",
           "name": "dedp.ts",
-          "style": {
-            "label": {
-              "value": "kek"
+          "meta": {
+            "lines": {
+              "total": 394,
+              "covered": 315,
+              "skipped": 0,
+              "pct": 79.94
+            },
+            "functions": {
+              "total": 16,
+              "covered": 6,
+              "skipped": 0,
+              "pct": 37.5
+            },
+            "statements": {
+              "total": 394,
+              "covered": 315,
+              "skipped": 0,
+              "pct": 79.94
+            },
+            "branches": {
+              "total": 44,
+              "covered": 34,
+              "skipped": 0,
+              "pct": 77.27
             }
           },
           "children": [
@@ -32,9 +95,30 @@
               "id": "/Users/aoriekhov/git/personal/ts-tree/test/test-project/nested.ts",
               "path": "/Users/aoriekhov/git/personal/ts-tree/test/test-project/nested.ts",
               "name": "nested.ts",
-              "style": {
-                "label": {
-                  "value": "kek"
+              "meta": {
+                "lines": {
+                  "total": 394,
+                  "covered": 315,
+                  "skipped": 0,
+                  "pct": 50.94
+                },
+                "functions": {
+                  "total": 16,
+                  "covered": 6,
+                  "skipped": 0,
+                  "pct": 37.5
+                },
+                "statements": {
+                  "total": 394,
+                  "covered": 315,
+                  "skipped": 0,
+                  "pct": 79.94
+                },
+                "branches": {
+                  "total": 44,
+                  "covered": 34,
+                  "skipped": 0,
+                  "pct": 77.27
                 }
               },
               "children": []
@@ -43,9 +127,30 @@
               "id": "/Users/aoriekhov/git/personal/ts-tree/test/test-project/nested2.ts",
               "path": "/Users/aoriekhov/git/personal/ts-tree/test/test-project/nested2.ts",
               "name": "nested2.ts",
-              "style": {
-                "label": {
-                  "value": "kek"
+              "meta": {
+                "lines": {
+                  "total": 394,
+                  "covered": 315,
+                  "skipped": 0,
+                  "pct": 40.94
+                },
+                "functions": {
+                  "total": 16,
+                  "covered": 6,
+                  "skipped": 0,
+                  "pct": 37.5
+                },
+                "statements": {
+                  "total": 394,
+                  "covered": 315,
+                  "skipped": 0,
+                  "pct": 79.94
+                },
+                "branches": {
+                  "total": 44,
+                  "covered": 34,
+                  "skipped": 0,
+                  "pct": 77.27
                 }
               },
               "children": []
