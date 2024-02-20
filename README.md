@@ -32,7 +32,8 @@ serve coverage
 - [ ] file graph
 - [x] deploy
 - [x] pass tree as search param
-- [x] view mode tree/coverageTree 
+- [x] view mode tree/coverageTree
+- [ ] use `ts-tree` and pass somehow generated tree
 
 ## Next doc
 
