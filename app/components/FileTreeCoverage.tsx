@@ -78,7 +78,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
             y: 0,
             width: 200,
             height: 75,
-            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct): '#823df4',
+            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct) : '#823df4',
           },
           draggable: true,
           name: 'circle-floor',
