@@ -4,19 +4,9 @@
 
 1. Enable `json-summary` and `html`(optional) reports for [jest](https://jestjs.io/docs/configuration#coveragereporters-arraystring--string-options) or [karma](https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md#type)
 
-2. Run [ts-tree](https://github.com/andriyor/ts-tree) generation with coverage report info
+2. Use [ts-tree-cli](https://github.com/andriyor/ts-tree-cli) to generate tree
 
-```shell
-tsx ../../../personal/ts-tree/src/fileTree.ts -r='src/containers/settings/bank-account/bank-account.container.tsx' -o='../../../personal/coverage-graph-next/app/tree-data/my-tree.json' -m='coverage/coverage-summary.json'
-```
-
-3. Run total coverage calculation based on generated tree
-
-```shell
-tsx app/index.ts
-```
-
-4. [Serve](https://github.com/vercel/serve) coverage to open `html` report by node
+3. [Serve](https://github.com/vercel/serve) coverage to open `html` report
 
 ```
 serve coverage
@@ -40,7 +30,6 @@ serve coverage
 - [ ] show used exort as arrow label?
 - [ ] coverage based on used import
 - [ ] file graph
-- [ ] use as CLI with ts-tree inside
 - [x] deploy
 - [x] pass tree as search param
 - [x] view mode tree/coverageTree 
