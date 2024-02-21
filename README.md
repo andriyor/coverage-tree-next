@@ -33,7 +33,7 @@ serve coverage
 - [x] deploy
 - [x] pass tree as search param
 - [x] view mode tree/coverageTree
-- [ ] use `ts-tree` and pass somehow generated tree
+- [ ] drug and drop report file
 
 ## Next doc
 
