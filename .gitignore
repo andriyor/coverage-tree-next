@@ -36,3 +36,4 @@ yarn-error.log*
 next-env.d.ts
 app/tree-data/my-tree.json
 app/tree-data/my-tree-sum.json
+.idea
