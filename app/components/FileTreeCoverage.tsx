@@ -61,10 +61,10 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
   const graphinRef = useRef();
 
   React.useEffect(() => {
-    const {
-      graph, // Graph instance of g6
-      apis, // API interface provided by Graphin
-    } = graphinRef.current;
+    // Graph instance of g6
+    // API interface provided by Graphin
+    // @ts-expect-error
+    const { graph, apis } = graphinRef.current;
     graph.render();
   }, [mode]);
 
@@ -111,6 +111,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
 
   return (
     <Graphin
+      // @ts-expect-error
       ref={graphinRef}
       data={data}
       defaultNode={{ type: 'custom-node' }}
