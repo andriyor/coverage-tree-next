@@ -27,13 +27,14 @@ serve coverage
 - [ ] search node
 - [ ] render tree on center initially
 - [x] used exports by parent node
-- [ ] show used exort as arrow label?
+- [ ] show used export as arrow label?
 - [ ] coverage based on used import
-- [ ] file graph
+- [x] file graph
 - [x] deploy
 - [x] pass tree as search param
 - [x] view mode tree/coverageTree
 - [x] drug and drop report file
+- [ ] fix drag issues
 
 ## Next doc
 

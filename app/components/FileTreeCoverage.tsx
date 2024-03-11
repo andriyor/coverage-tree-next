@@ -1,11 +1,10 @@
 'use client';
+import React, { useRef } from 'react';
 import Graphin, { Behaviors, Utils, Components, GraphinTreeData } from '@antv/graphin';
 
 // import tree from "./tree.json";
 // import myTree from "./my-tree.json";
 // import myTreeSum from '../tree-data/my-tree-sum.json';
-import { useSearchParams } from 'next/navigation';
-import lzString from 'lz-string';
 
 import { NodeMenu } from './NodeMenu';
 import { FileTreeNew, Mode } from '../types';
@@ -59,6 +58,16 @@ type FileTreeCoverageProps = {
 };
 
 export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
+  const graphinRef = useRef();
+
+  React.useEffect(() => {
+    const {
+      graph, // Graph instance of g6
+      apis, // API interface provided by Graphin
+    } = graphinRef.current;
+    graph.render();
+  }, [mode]);
+
   Graphin.registerNode(
     'custom-node',
     {
@@ -102,6 +111,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
 
   return (
     <Graphin
+      ref={graphinRef}
       data={data}
       defaultNode={{ type: 'custom-node' }}
       layout={{
