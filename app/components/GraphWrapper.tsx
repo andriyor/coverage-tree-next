@@ -1,5 +1,5 @@
 'use client';
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { decompressFromEncodedURIComponent } from 'lz-string';
@@ -7,15 +7,13 @@ import { useDropzone } from 'react-dropzone-esm';
 
 import { FileTreeCoverage } from './FileTreeCoverage';
 import tree from '../tree-data/tree.json';
-import { Mode } from '../types';
+import { FileTree, Mode } from '../types';
 
 export const GraphWrapper = () => {
   const searchParams = useSearchParams();
   const json = searchParams.get('json');
-  const modeQuery = (searchParams.get('mode') as Mode) || 'tree';
 
-  const [mode, setMode] = useState<Mode>(modeQuery);
-  const [droppableTree, setDroppableTree] = useState(tree);
+  const [droppableTree, setDroppableTree] = useState<FileTree>(tree as unknown as FileTree);
 
   useEffect(() => {
     if (json) {
@@ -30,7 +28,6 @@ export const GraphWrapper = () => {
     reader.onabort = () => console.log('file reading was aborted');
     reader.onerror = () => console.log('file reading has failed');
     reader.onload = () => {
-      setMode('tree');
       const tree = JSON.parse(reader.result as string);
       setDroppableTree(tree);
     };
@@ -39,13 +36,7 @@ export const GraphWrapper = () => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  const handleModeChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setMode('coverageTree');
-    } else {
-      setMode('tree');
-    }
-  }
+  const mode: Mode = droppableTree.meta ? 'coverageTree' : 'tree';
 
   return (
     <div style={{ height: '95.0vh' }}>
@@ -56,10 +47,6 @@ export const GraphWrapper = () => {
         ) : (
           <p>Drag & drop some files here, or click to select files</p>
         )}
-      </div>
-      <div>
-        <input type="checkbox" id="scales" name="scales" onChange={handleModeChange} />
-        <label htmlFor="scales">Is coverage mode</label>
       </div>
       <FileTreeCoverage data={droppableTree} mode={mode} />
     </div>
