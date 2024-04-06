@@ -8,7 +8,7 @@
 
 3. [Serve](https://github.com/vercel/serve) coverage to open `html` report
 
-```
+```shell
 serve coverage
 ```
 

@@ -1,6 +1,6 @@
 'use client';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 import { decompressFromEncodedURIComponent } from 'lz-string';
 import { useDropzone } from 'react-dropzone-esm';
@@ -10,18 +10,15 @@ import tree from '../tree-data/tree.json';
 import { FileTree, Mode } from '../types';
 
 export const GraphWrapper = () => {
-  const searchParams = useSearchParams();
-  const json = searchParams.get('json');
-
+  const params = useParams()
   const [droppableTree, setDroppableTree] = useState<FileTree>(tree as unknown as FileTree);
 
   useEffect(() => {
-    if (json) {
-      const data = decompressFromEncodedURIComponent(json);
-      const parsedData = JSON.parse(data);
-      setDroppableTree(parsedData);
-    }
-  }, [json]);
+    const currentHash = window.location.hash.replace("#", "");
+    const data = decompressFromEncodedURIComponent(currentHash);
+    const parsedData = JSON.parse(data);
+    setDroppableTree(parsedData);
+  }, [params]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const reader = new FileReader();
