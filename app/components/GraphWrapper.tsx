@@ -10,14 +10,16 @@ import tree from '../tree-data/tree.json';
 import { FileTree, Mode } from '../types';
 
 export const GraphWrapper = () => {
-  const params = useParams()
+  const params = useParams();
   const [droppableTree, setDroppableTree] = useState<FileTree>(tree as unknown as FileTree);
 
   useEffect(() => {
-    const currentHash = window.location.hash.replace("#", "");
+    const currentHash = window.location.hash.replace('#', '');
     const data = decompressFromEncodedURIComponent(currentHash);
     const parsedData = JSON.parse(data);
-    setDroppableTree(parsedData);
+    if (parsedData) {
+      setDroppableTree(parsedData);
+    }
   }, [params]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -33,7 +35,7 @@ export const GraphWrapper = () => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  const mode: Mode = droppableTree.meta ? 'coverageTree' : 'tree';
+  const mode: Mode = droppableTree?.meta ? 'coverageTree' : 'tree';
 
   return (
     <div style={{ height: '95.0vh' }}>
