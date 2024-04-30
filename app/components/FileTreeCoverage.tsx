@@ -80,16 +80,28 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
       },
       // @ts-expect-error
       draw(cfg: FileTreeNew, group) {
-        const keyshape = group.addShape('rect', {
+        group.addShape('rect', {
           attrs: {
             id: 'circle-floor',
             x: 0,
             y: 0,
             width: 200,
             height: 75,
-            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct) : '#823df4',
+            fill: 'blue'
           },
           draggable: true,
+          name: 'circle-floor',
+        });
+        group.addShape('rect', {
+          attrs: {
+            id: 'circle-floor',
+            x: 0,
+            y: 0,
+            width: 200 * cfg.meta.lines.pct / 100,
+            height: 75,
+            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct) : '#823df4',
+          },
+          draggable: false,
           name: 'circle-floor',
         });
         group.addShape('text', {
@@ -103,7 +115,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
           draggable: true,
           name: 'text',
         });
-        return keyshape;
+        return group;
       },
     },
     'single-node',
