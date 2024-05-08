@@ -102,19 +102,21 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
           draggable: true,
           name: 'circle-floor',
         });
-        group.addShape('rect', {
-          attrs: {
-            id: 'circle-floor',
-            x: 0,
-            y: 0,
-            radius: 5,
-            width: 200 * cfg.meta.lines.pct / 100,
-            height: 75,
-            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).main : '#823df4',
-          },
-          draggable: false,
-          name: 'circle-floor',
-        });
+        if (cfg.meta.lines.pct !== 0) {
+          group.addShape('rect', {
+            attrs: {
+              id: 'circle-floor',
+              x: 0,
+              y: 0,
+              radius: 5,
+              width: 200 * cfg.meta.lines.pct / 100,
+              height: 75,
+              fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).main : '#823df4',
+            },
+            draggable: false,
+            name: 'circle-floor',
+          });
+        }
         group.addShape('text', {
           attrs: {
             fontSize: 14,
