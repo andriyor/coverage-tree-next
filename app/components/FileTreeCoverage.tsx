@@ -15,13 +15,24 @@ const { ContextMenu } = Components;
 // const dataTree = Utils.mock(20).tree().graphinTree();
 // console.log(dataTree);
 
+// https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+// main - A400, back - 100
 const getColorByCoverage = (percentage: number) => {
   if (percentage >= 70 && percentage <= 100) {
-    return 'green';
+    return {
+      main: '#00E676',
+      back: '#C8E6C9'
+    };
   } else if (percentage >= 50 && percentage <= 70) {
-    return 'yellow';
+    return {
+      main: '#FFEA00',
+      back: '#FFF59D'
+    };
   } else {
-    return 'red';
+    return {
+      main: '#FF3D00',
+      back: '#FFAB91'
+    };
   }
 };
 
@@ -87,7 +98,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
             y: 0,
             width: 200,
             height: 75,
-            fill: 'blue'
+            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).back : 'blue',
           },
           draggable: true,
           name: 'circle-floor',
@@ -99,7 +110,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
             y: 0,
             width: 200 * cfg.meta.lines.pct / 100,
             height: 75,
-            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct) : '#823df4',
+            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).main : '#823df4',
           },
           draggable: false,
           name: 'circle-floor',
@@ -110,7 +121,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
             x: 0,
             y: 70,
             text: mode === 'coverageTree' ? buildNodeText(cfg) : cfg.name,
-            fill: '#ddd',
+            fill: 'black',
           },
           draggable: true,
           name: 'text',
