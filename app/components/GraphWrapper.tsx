@@ -37,6 +37,15 @@ export const GraphWrapper = () => {
 
   const mode: Mode = droppableTree?.meta ? 'coverageTree' : 'tree';
 
+  const [graphReady, setGraphReady] = useState(false);
+
+  // fix dragging on first render
+  useEffect(() => {
+    setTimeout(() => {
+      setGraphReady(true);
+    }, 0);
+  }, []);
+
   return (
     <div style={{ height: '95.0vh' }}>
       <div {...getRootProps()}>
@@ -47,7 +56,11 @@ export const GraphWrapper = () => {
           <p>Drag & drop some files here, or click to select files</p>
         )}
       </div>
-      <FileTreeCoverage data={droppableTree} mode={mode} />
+      {graphReady ? (
+        <FileTreeCoverage data={droppableTree} mode={mode} />
+      ) : (
+        <>Loading graph...</>
+      )}
     </div>
   );
 };

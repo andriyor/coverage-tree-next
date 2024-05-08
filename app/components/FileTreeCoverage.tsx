@@ -21,17 +21,17 @@ const getColorByCoverage = (percentage: number) => {
   if (percentage >= 70 && percentage <= 100) {
     return {
       main: '#00E676',
-      back: '#C8E6C9'
+      back: '#C8E6C9',
     };
   } else if (percentage >= 50 && percentage <= 70) {
     return {
       main: '#FFEA00',
-      back: '#FFF59D'
+      back: '#FFF59D',
     };
   } else {
     return {
       main: '#FF3D00',
-      back: '#FFAB91'
+      back: '#FFAB91',
     };
   }
 };
@@ -102,6 +102,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
           draggable: true,
           name: 'circle-floor',
         });
+
         if (cfg.meta.lines.pct !== 0) {
           group.addShape('rect', {
             attrs: {
@@ -109,14 +110,16 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
               x: 0,
               y: 0,
               radius: 5,
-              width: 200 * cfg.meta.lines.pct / 100,
+              width: (200 * cfg.meta.lines.pct) / 100,
               height: 75,
-              fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).main : '#823df4',
+              fill:
+                mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).main : '#823df4',
             },
             draggable: false,
             name: 'circle-floor',
           });
         }
+
         group.addShape('text', {
           attrs: {
             fontSize: 14,
