@@ -54,9 +54,8 @@ const renderUsedExports = (cfg: FileTreeNew) => {
 
 const buildNodeText = (cfg: FileTreeNew) => {
   return (
-    `${cfg.name}\n` +
+    `${cfg.name} ${cfg.meta.lines.pct}%\n` +
     'Lines in file: ' +
-    cfg.meta.lines.pct +
     ` ${cfg.meta.lines.covered}/${cfg.meta.lines.total}\n` +
     renderLinesInTree(cfg) +
     renderUsedExports(cfg)
@@ -89,13 +88,13 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
           selected: {},
         },
       },
-      // @ts-expect-error
-      draw(cfg: FileTreeNew, group) {
+      draw(cfg: FileTreeNew, group: any) {
         group.addShape('rect', {
           attrs: {
             id: 'circle-floor',
             x: 0,
             y: 0,
+            radius: 5,
             width: 200,
             height: 75,
             fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).back : 'blue',
@@ -108,6 +107,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
             id: 'circle-floor',
             x: 0,
             y: 0,
+            radius: 5,
             width: 200 * cfg.meta.lines.pct / 100,
             height: 75,
             fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).main : '#823df4',
@@ -117,8 +117,8 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
         });
         group.addShape('text', {
           attrs: {
-            fontSize: 12,
-            x: 0,
+            fontSize: 14,
+            x: 10,
             y: 70,
             text: mode === 'coverageTree' ? buildNodeText(cfg) : cfg.name,
             fill: 'black',
