@@ -89,7 +89,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
         },
       },
       draw(cfg: FileTreeNew, group: any) {
-        group.addShape('rect', {
+        const keyshape = group.addShape('rect', {
           attrs: {
             id: 'circle-floor',
             x: 0,
@@ -126,7 +126,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
           draggable: true,
           name: 'text',
         });
-        return group;
+        return keyshape;
       },
     },
     'single-node',
