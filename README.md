@@ -12,6 +12,11 @@
 serve coverage
 ```
 
+## Example
+
+<img width="1162" alt="image" src="https://github.com/user-attachments/assets/2c4a0469-a0ea-4e56-bd96-0a31bc894c73">
+
+
 ## TODO
 
 - [x] show tree tree based on coverage report
