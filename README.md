@@ -40,6 +40,7 @@ serve coverage
 - [x] view mode tree/coverageTree
 - [x] drug and drop report file
 - [ ] fix drag issues
+- [ ] open a component in the editor https://github.com/ericclemmons/click-to-component
 
 ## Next doc
 
