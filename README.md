@@ -26,10 +26,10 @@ serve coverage
 - [ ] select between lines/functions/statements/branches
 - [ ] node with coverage progress bar
 - [x] calculate total coverage of node
-- [ ] calculate total coverage of node and ignore duplicated nodes
+- [ ] calculate the total coverage of a node and ignore duplicated nodes
 - [x] open html report by node
 - [x] copy node file path
-- [ ] search node
+- [ ] search and highlight node
 - [ ] render tree on center initially
 - [x] used exports by parent node
 - [ ] show used export as arrow label?

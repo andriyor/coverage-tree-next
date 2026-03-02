@@ -97,13 +97,13 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
             radius: 5,
             width: 200,
             height: 75,
-            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).back : 'blue',
+            fill: mode === 'coverageTree' ? getColorByCoverage(cfg.meta.lines.pct).back : 'yellow',
           },
           draggable: true,
           name: 'circle-floor',
         });
 
-        if (cfg.meta.lines.pct !== 0) {
+        if (cfg?.meta?.lines?.pct && cfg.meta.lines.pct !== 0) {
           group.addShape('rect', {
             attrs: {
               id: 'circle-floor',
