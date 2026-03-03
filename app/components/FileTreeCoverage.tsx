@@ -13,8 +13,6 @@ import { FileTreeNew, Mode } from '../types';
 const { DragCanvas, ZoomCanvas, DragNode, TreeCollapse } = Behaviors;
 const { ContextMenu } = Components;
 
-// const dataTree = Utils.mock(20).tree().graphinTree();
-
 // https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
 // main - A400, back - 100
 const getColorByCoverage = (percentage: number) => {
@@ -67,6 +65,33 @@ type FileTreeCoverageProps = {
   mode: Mode;
 };
 
+const graphLayout = {
+  type: 'dagre',
+  rankdir: 'TB',
+  nodesep: 70,
+  ranksep: 50,
+};
+
+const treeLayout = {
+  type: 'compactBox',
+  direction: 'LR',
+  getId: (d: FileTreeNew) => {
+    return d.id;
+  },
+  getHeight: () => {
+    return 16;
+  },
+  getWidth: () => {
+    return 20;
+  },
+  getVGap: () => {
+    return 40;
+  },
+  getHGap: () => {
+    return 120;
+  },
+};
+
 export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
   const graphinRef = useRef();
 
@@ -76,6 +101,8 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
   const [matchingNodeIds, setMatchingNodeIds] = useState<string[]>([]);
   const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
   const [caseSensitive, setCaseSensitive] = useState(false);
+
+  const layout = data.children ? treeLayout : graphLayout;
 
   // Search algorithm - BFS traversal
   const findMatchingNodes = React.useCallback(
@@ -308,25 +335,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
         ref={graphinRef}
         data={data}
         defaultNode={{ type: 'custom-node' }}
-        layout={{
-          type: 'dagre',
-          direction: 'LR',
-          getId: function getId(d: FileTreeNew) {
-            return d.id;
-          },
-          getHeight: function getHeight() {
-            return 16;
-          },
-          getWidth: function getWidth() {
-            return 20;
-          },
-          getVGap: function getVGap() {
-            return 40;
-          },
-          getHGap: function getHGap() {
-            return 120;
-          },
-        }}
+        layout={layout}
       >
         <TreeCollapse trigger="click" />
         <ZoomCanvas enableOptimize />
