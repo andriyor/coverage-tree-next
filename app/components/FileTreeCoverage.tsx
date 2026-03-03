@@ -14,7 +14,6 @@ const { DragCanvas, ZoomCanvas, DragNode, TreeCollapse } = Behaviors;
 const { ContextMenu } = Components;
 
 // const dataTree = Utils.mock(20).tree().graphinTree();
-// console.log(dataTree);
 
 // https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
 // main - A400, back - 100
@@ -310,7 +309,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
         data={data}
         defaultNode={{ type: 'custom-node' }}
         layout={{
-          type: 'compactBox',
+          type: 'dagre',
           direction: 'LR',
           getId: function getId(d: FileTreeNew) {
             return d.id;
@@ -329,7 +328,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
           },
         }}
       >
-        <TreeCollapse trigger="click " />
+        <TreeCollapse trigger="click" />
         <ZoomCanvas enableOptimize />
         <DragNode />
         <DragCanvas />

@@ -6,19 +6,32 @@ import { decompressFromEncodedURIComponent } from 'lz-string';
 import { useDropzone } from 'react-dropzone-esm';
 
 import { FileTreeCoverage } from './FileTreeCoverage';
-import tree from '../tree-data/tree.json';
+// import tree from '../tree-data/tree.json';
+import graph from '../tree-data/graph.json';
 import { FileTree, Mode } from '../types';
+import { Utils } from '@antv/graphin';
+
+// const dataTree = Utils.mock(10).circle().graphin();
+// console.log(dataTree);
 
 export const GraphWrapper = () => {
   const params = useParams();
-  const [droppableTree, setDroppableTree] = useState<FileTree>(tree as unknown as FileTree);
+  const [droppableTree, setDroppableTree] = useState<FileTree>(graph as unknown as FileTree);
 
   useEffect(() => {
     const currentHash = window.location.hash.replace('#', '');
-    const data = decompressFromEncodedURIComponent(currentHash);
-    const parsedData = JSON.parse(data);
-    if (parsedData) {
-      setDroppableTree(parsedData);
+    if (!currentHash) return;
+
+    try {
+      const data = decompressFromEncodedURIComponent(currentHash);
+      if (!data) return;
+
+      const parsedData = JSON.parse(data);
+      if (parsedData) {
+        setDroppableTree(parsedData);
+      }
+    } catch (error) {
+      console.error('Failed to parse data from hash:', error);
     }
   }, [params]);
 
