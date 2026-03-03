@@ -337,7 +337,7 @@ export const FileTreeCoverage = ({ data, mode }: FileTreeCoverageProps) => {
         defaultNode={{ type: 'custom-node' }}
         layout={layout}
       >
-        <TreeCollapse trigger="click" />
+        {data.children && <TreeCollapse trigger="click" />}
         <ZoomCanvas enableOptimize />
         <DragNode />
         <DragCanvas />
